@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rock, Paper, Scissors!</title>
+    <style>
+      .background {
+        background-image: url("./polkadots.png;");
+        background-repeat: repeat;
+        background-position: center;
+      }
+      .grid-container {
+        display: grid;
+        background-color: gold;
+        grid-template-rows: 100px 400px 100px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
+        justify-items: center;
+        align-items: center;
+      }
+      .titlefont {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 37px;
+        text-decoration-line: underline;
+      }
+      .scorefont {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 20px;
+        color: white;
+        font-weight: bold;
+        background-color: royalblue;
+        padding: 20px;
+        border: white 1px solid;
+      }
+      .button {
+        color: white;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: royalblue;
+      }
+      .button:hover {
+        transform: scale(2);
+      }
+      .image {
+        width: 300px;
+        height: 300px;
+      }
+      .image:hover {
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+
+  <body class="grid-container">
+    <div></div>
+    <div class="titlefont">Rock, Paper, Scissors!</div>
+    <div class="scorefont" id="score">
+      Player: 0 Computer: 0
+    </div>
+    <div>
+      <img src="./rockimage.png" class="image" onclick="game('rock');" />
+    </div>
+    <div>
+      <img src="./paperimage.png" class="image" onclick="game('paper');" />
+    </div>
+    <div>
+      <img
+        src="./blackscissors.png"
+        class="image"
+        onclick="game('scissors');"
+      />
+    </div>
+    <div></div>
+    <div>
+      <button class="button" id="button" onclick="playButton()">Play!</button>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
