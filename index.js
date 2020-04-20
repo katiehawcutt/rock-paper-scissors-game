@@ -3,30 +3,31 @@ var playerScore = 0;
 var computerScore = 0;
 var scoreBoard = document.getElementById("score");
 var gameRound = 0;
-var gameOutcome;
+var gamePlay = 0;
 var button = document.getElementById("button");
 var person;
 
 //the PLAY button
 function playButton() {
-  person = prompt("Please enter your name:");
-  if (person != null) {
+  if (gamePlay == 0) {
+    person = prompt("Please enter your name:");
     alert("Hello " + person + " ! Best of three...");
+  } else {
+    updateScoreBoard();
+    alert("Are you ready for another game " + person + "? Best of three...");
   }
 }
 
-//how the games runs
-function game(playerMove) {
-  // computer moves
+function generateComputerMove() {
   var computerMove = Math.floor(Math.random() * 3);
   if (computerMove == 0) {
     computerMove = "rock";
   } else if (computerMove == 1) {
     computerMove = "paper";
   } else computerMove = "scissors";
-  console.log(computerMove);
-
-  //player moves
+  return computerMove;
+}
+function compareScore(playerMove, computerMove) {
   if (playerMove == computerMove) {
     alert("You draw! You both played the same!");
   } else if (playerMove == "rock") {
@@ -54,7 +55,10 @@ function game(playerMove) {
       computerScore++;
     }
   }
-  // Game Outcome
+}
+
+function getGameOutcome() {
+  var gameOutcome;
   if (playerScore > computerScore) {
     gameOutcome = "WINNER!";
   } else if (playerScore < computerScore) {
@@ -62,12 +66,18 @@ function game(playerMove) {
   } else if (playerScore == computerScore) {
     gameOutcome = "It's a draw!";
   }
-  //scoreboard
+  return gameOutcome;
+}
+
+function updateScoreBoard() {
   scoreBoard.innerHTML =
     person + ": " + playerScore + " Computer:" + computerScore;
+}
 
-  //game round and end of game
+function countRounds(gameOutcome) {
   gameRound++;
+  gamePlay++;
+  updateScoreBoard();
   if (gameRound <= 2) {
   } else {
     alert("Game Over! " + gameOutcome + " You scored " + playerScore + "!");
@@ -76,6 +86,12 @@ function game(playerMove) {
     computerScore = 0;
     gameRound = 0;
   }
-
-  console.log(playerScore);
+}
+//how the games runs
+function game(playerMove) {
+  var computerMove = generateComputerMove();
+  compareScore(playerMove, computerMove);
+  var gameOutcome = getGameOutcome();
+  updateScoreBoard();
+  countRounds(gameOutcome);
 }

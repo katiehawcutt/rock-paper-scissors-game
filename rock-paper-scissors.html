@@ -2,6 +2,10 @@
 <html>
   <head>
     <title>Rock, Paper, Scissors!</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
+      rel="stylesheet"
+    />
     <style>
       .background {
         background-image: url("./polkadots.png;");
@@ -10,6 +14,10 @@
       }
       .grid-container {
         display: grid;
+        background-image: url("./polkadots.png");
+        background-repeat: repeat;
+        background-position: center;
+
         background-color: gold;
         grid-template-rows: 100px 400px 100px;
         grid-template-columns: 1fr 1fr 1fr;
@@ -18,25 +26,31 @@
         align-items: center;
       }
       .titlefont {
-        font-family: "Courier New", Courier, monospace;
-        font-size: 37px;
-        text-decoration-line: underline;
+        font-family: Bangers;
+        font-size: 50px;
+        background-color: #c71fc9;
+        color: white;
+        padding: 20px;
+        border: white solid 1px;
+        margin-top: 50px;
+
+        /*text-decoration-line: underline;*/
       }
       .scorefont {
-        font-family: "Courier New", Courier, monospace;
-        font-size: 20px;
+        font-family: Bangers;
+        font-size: 35px;
         color: white;
-        font-weight: bold;
         background-color: royalblue;
         padding: 20px;
         border: white 1px solid;
+        margin-top: 50px;
       }
       .button {
         color: white;
-        font-family: "Courier New", Courier, monospace;
-        font-size: 20px;
-        font-weight: bold;
+        font-family: Bangers;
+        font-size: 40px;
         background-color: royalblue;
+        padding: 10px;
       }
       .button:hover {
         transform: scale(2);
