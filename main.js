@@ -1,4 +1,3 @@
-//variables
 var playerScore = 0;
 var computerScore = 0;
 var scoreBoard = document.getElementById("score");
@@ -7,7 +6,6 @@ var gamePlay = 0;
 var button = document.getElementById("button");
 var person;
 
-//the PLAY button
 function playButton() {
   if (gamePlay == 0) {
     person = prompt("Please enter your name:");
@@ -80,7 +78,14 @@ function countRounds(gameOutcome) {
   updateScoreBoard();
   if (gameRound <= 2) {
   } else {
-    alert("Game Over! " + gameOutcome + " You scored " + playerScore + "!");
+    alert(
+      "Game Over! " +
+        gameOutcome +
+        " You scored " +
+        playerScore +
+        "! Computer scored " +
+        computerScore
+    );
     button.innerHTML = "Play again!";
     playerScore = 0;
     computerScore = 0;
