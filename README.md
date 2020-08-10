@@ -1,5 +1,7 @@
 # Rock, Paper, Scissors
 
+![Rock,Paper, Scissors](./Images/game-screenshot.PNG)
+
 ###### April 2020
 
 _This was the first game I made and my first bigger project using JavaScript! I needed quite a bit of help at each step of the game creation but it was a super helpful learning curve and taught me how to go about planning and creating a game / app. I feel much more confident approaching new projects after this._
