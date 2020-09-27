@@ -229,7 +229,7 @@ p {
 
 #gameScore {
   color: var(--yellow);
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 /*MEDIA QUERIES*/
