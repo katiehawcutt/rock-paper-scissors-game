@@ -242,16 +242,16 @@ p {
 
 @media only screen and (max-width: 1000px) {
   h1 {
-    font-size: 30px;
+    font-size: 38px;
   }
   .game-info-boxes {
-    font-size: 25px;
+    font-size: 30px;
   }
 }
 
-@media only screen and (max-width: 500px) {
+/* @media only screen and (max-width: 500px) {
   header {
     flex-direction: column;
     height: 500px;
   }
-}
+} */
