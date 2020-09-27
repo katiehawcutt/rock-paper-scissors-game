@@ -69,7 +69,7 @@ function compareScore(playerMove, computerMove) {
       playerScore--;
       displayResult();
     } else {
-      rouncOutcome = "You win! Computer played scissors!";
+      roundOutcome = "You win! Computer played scissors!";
       playerScore++;
       computerScore--;
       displayResult();
