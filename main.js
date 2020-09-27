@@ -128,7 +128,7 @@ function getGameOutcome() {
     comment = "Those computer bots beat you. Better luck next time!";
   } else if (playerScore == computerScore) {
     gameOutcome = "It's a draw!";
-    comment = "It was a close one but the computer bots stole it!";
+    comment = "You and the bots are neck and neck. Fancy another go?";
   }
   return gameOutcome;
 }
