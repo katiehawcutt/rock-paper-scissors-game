@@ -6,6 +6,7 @@ let person;
 let roundOutcome;
 let gameOutcome;
 let comment;
+let gameStarted = false;
 
 //BOARDS
 const scoreBoard = document.querySelector("#score");
@@ -42,6 +43,7 @@ function startGame() {
   }
   popUpBox1.style.display = "none";
   body.classList.remove("background-opacity");
+  gameStarted = true;
   gameRound++;
   updateBoards();
   playButton.style.display = "none";
@@ -146,6 +148,7 @@ function countRounds(gameOutcome) {
 }
 
 function game(playerMove) {
+  if (gameStarted === false) return;
   var computerMove = generateComputerMove();
   compareScore(playerMove, computerMove);
   var gameOutcome = getGameOutcome();
@@ -167,6 +170,7 @@ function playAgain() {
   popUpBox2.style.display = "none";
   body.classList.remove("background-opacity");
   playButton.style.display = "none";
+  gameStarted = false;
   playerScore = 0;
   computerScore = 0;
   gameRound = 1;
