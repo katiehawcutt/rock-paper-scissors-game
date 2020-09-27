@@ -2,6 +2,10 @@
 
 ![Rock,Paper, Scissors](./Images/game-screenshot.PNG)
 
+###### September 2020
+
+_I've just refactored this game so that all interactions are now through HTML elements using the DOM rather than with `prompt()`, `alert()` and `confirm()`. I also seperated the CSS out into it's own file and refactored the styling to use flexblox instead of grid._
+
 ###### April 2020
 
 _This was the first game I made and my first bigger project using JavaScript! I needed quite a bit of help at each step of the game creation but it was a super helpful learning curve and taught me how to go about planning and creating a game / app. I feel much more confident approaching new projects after this._

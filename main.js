@@ -1,20 +1,53 @@
-var playerScore = 0;
-var computerScore = 0;
-var scoreBoard = document.getElementById("score");
-var gameRound = 0;
-var gamePlay = 0;
-var button = document.getElementById("button");
-var person;
+//GAME VARIABLES
+let playerScore = 0;
+let computerScore = 0;
+let gameRound = 0;
+let person;
+let roundOutcome;
+let gameOutcome;
+let comment;
 
-function playButton() {
-  if (gamePlay == 0) {
-    person = prompt("Please enter your name:");
-    alert("Hello " + person + " ! Best of three...");
+//BOARDS
+const scoreBoard = document.querySelector("#score");
+const gameRoundDisplay = document.querySelector("#round");
+
+//BUTTONS
+const playButton = document.querySelector("#playButton");
+const closeButton = document.querySelector("#closePopUp");
+const playAgainButton = document.querySelector("#playAgain");
+const quitButton = document.querySelector("#refreshPage");
+const startGameButton = document.querySelector("#startGame");
+const okayButton = document.querySelector("#okay");
+
+//POP UP BOXES
+const popUpBox1 = document.querySelector("#popUpBox1");
+const popUpBox2 = document.querySelector("#popUpBox2");
+const miniPopUpBox = document.querySelector("#miniPopUpBox");
+const body = document.querySelector("body");
+
+//UPDATING OTHER TEXT
+const userName = document.querySelector("#userName");
+const roundResult = document.querySelector("#roundResult");
+const gameResult = document.querySelector("#gameOutcome");
+const gameComment = document.querySelector("#gameComment");
+const gameScore = document.querySelector("#gameScore");
+
+//START GAME
+
+function startGame() {
+  if (userName.value === "") {
+    person = "Player";
   } else {
-    updateScoreBoard();
-    alert("Are you ready for another game " + person + "? Best of three...");
+    person = userName.value;
   }
+  popUpBox1.style.display = "none";
+  body.classList.remove("background-opacity");
+  gameRound++;
+  updateBoards();
+  playButton.style.display = "none";
 }
+
+//GAME FUNCTIONALITY
 
 function generateComputerMove() {
   var computerMove = Math.floor(Math.random() * 3);
@@ -27,76 +60,143 @@ function generateComputerMove() {
 }
 function compareScore(playerMove, computerMove) {
   if (playerMove == computerMove) {
-    alert("You draw! You both played the same!");
+    roundOutcome = "You draw! You both played the same!";
+    displayResult();
   } else if (playerMove == "rock") {
     if (computerMove == "paper") {
-      alert("You lose! Computer played paper!");
+      roundOutcome = "You lose! Computer played paper!";
       computerScore++;
+      playerScore--;
+      displayResult();
     } else {
-      alert("You win! Computer played scissors!");
+      rouncOutcome = "You win! Computer played scissors!";
       playerScore++;
+      computerScore--;
+      displayResult();
     }
   } else if (playerMove == "scissors") {
     if (computerMove == "rock") {
-      alert("You lose! Computer played rock!");
+      roundOutcome = "You lose! Computer played rock!";
       computerScore++;
+      playerScore--;
+      displayResult();
     } else {
-      alert("You win! Computer played paper!");
+      roundOutcome = "You win! Computer played paper!";
       playerScore++;
+      computerScore--;
+      displayResult();
     }
   } else if (playerMove == "paper") {
     if (computerMove == "rock") {
-      alert("You win! Computer played rock!");
+      roundOutcome = "You win! Computer played rock!";
       playerScore++;
+      computerScore--;
+      displayResult();
     } else {
-      alert("You lose! Computer played scissors!");
+      roundOutcome = "You lose! Computer played scissors!";
       computerScore++;
+      playerScore--;
+      displayResult();
     }
+  }
+}
+
+function displayResult() {
+  miniPopUpBox.style.display = "flex";
+  body.classList.add("background-opacity");
+  roundResult.innerText = roundOutcome;
+}
+
+function closeMiniPopUp() {
+  if (gameRound <= 3) {
+    miniPopUpBox.style.display = "none";
+    body.classList.remove("background-opacity");
+    updateBoards();
+  } else {
+    miniPopUpBox.style.display = "none";
+    body.classList.remove("background-opacity");
+    endOfGamePopUp();
   }
 }
 
 function getGameOutcome() {
-  var gameOutcome;
   if (playerScore > computerScore) {
     gameOutcome = "WINNER!";
+    comment = "Awesome work! You reign over the computer bots!";
   } else if (playerScore < computerScore) {
     gameOutcome = "You lost this time!";
+    comment = "Those computer bots beat you. Better luck next time!";
   } else if (playerScore == computerScore) {
     gameOutcome = "It's a draw!";
+    comment = "It was a close one but the computer bots stole it!";
   }
   return gameOutcome;
 }
 
-function updateScoreBoard() {
-  scoreBoard.innerHTML =
-    person + ": " + playerScore + " Computer:" + computerScore;
+function updateBoards() {
+  scoreBoard.innerText = `${person}: ${playerScore} Computer: ${computerScore}`;
+  gameRoundDisplay.innerText = `Round: ${gameRound}`;
 }
 
 function countRounds(gameOutcome) {
   gameRound++;
-  gamePlay++;
-  updateScoreBoard();
-  if (gameRound <= 2) {
-  } else {
-    alert(
-      "Game Over! " +
-        gameOutcome +
-        " You scored " +
-        playerScore +
-        "! Computer scored " +
-        computerScore
-    );
-    button.innerHTML = "Play again!";
-    playerScore = 0;
-    computerScore = 0;
-    gameRound = 0;
+  if (gameRound > 3) {
+    gameRoundDisplay.innerText = `Round: 3`;
   }
 }
-//how the games runs
+
 function game(playerMove) {
   var computerMove = generateComputerMove();
   compareScore(playerMove, computerMove);
   var gameOutcome = getGameOutcome();
-  updateScoreBoard();
+  updateBoards();
   countRounds(gameOutcome);
 }
+
+//END OF GAME
+
+function endOfGamePopUp() {
+  popUpBox2.style.display = "flex";
+  body.classList.add("background-opacity");
+  gameResult.innerText = gameOutcome;
+  gameScore.innerText = `${person}: ${playerScore} Computer: ${computerScore}`;
+  gameComment.innerText = comment;
+}
+
+function playAgain() {
+  popUpBox2.style.display = "none";
+  body.classList.remove("background-opacity");
+  playButton.style.display = "none";
+  playerScore = 0;
+  computerScore = 0;
+  gameRound = 1;
+  updateBoards();
+}
+
+function refreshForNewPlayer() {
+  popUpBox2.style.display = "none";
+  body.classList.remove("background-opacity");
+  playButton.style.display = "flex";
+  playerScore = 0;
+  computerScore = 0;
+  gameRound = 0;
+  person = "Player";
+  updateBoards();
+}
+
+//EVENT LISTENERS
+
+playButton.addEventListener("click", () => {
+  popUpBox1.style.display = "flex";
+  body.classList.add("background-opacity");
+});
+
+closeButton.addEventListener("click", () => {
+  popUpBox1.style.display = "none";
+  body.classList.remove("background-opacity");
+});
+
+okayButton.addEventListener("click", closeMiniPopUp);
+startGameButton.addEventListener("click", startGame);
+quitButton.addEventListener("click", refreshForNewPlayer);
+playAgainButton.addEventListener("click", playAgain);

@@ -1,104 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Rock, Paper, Scissors!</title>
+    <link rel="shortcut icon" type="image/png" href="./Images/rockimage.png" />
+    <link href="styles.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
       rel="stylesheet"
     />
-    <style>
-      .background {
-        background-image: url("./Images/polkadots.png;");
-        background-repeat: repeat;
-        background-position: center;
-      }
-      .grid-container {
-        display: grid;
-        background-image: url("./Images/polkadots.png");
-        background-repeat: repeat;
-        background-position: center;
-
-        background-color: gold;
-        grid-template-rows: 100px 400px 100px;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 20px;
-        justify-items: center;
-        align-items: center;
-      }
-      .titlefont {
-        width: 450px;
-        text-align: center;
-        font-family: Bangers;
-        font-size: 50px;
-        background-color: #c71fc9;
-        color: white;
-        padding: 20px;
-        border: white solid 1px;
-        margin-top: 50px;
-
-        /*text-decoration-line: underline;*/
-      }
-      .scorefont {
-        font-family: Bangers;
-        font-size: 35px;
-        color: white;
-        background-color: royalblue;
-        padding: 20px;
-        border: white 1px solid;
-        margin-top: 50px;
-      }
-      .button {
-        color: white;
-        font-family: Bangers;
-        font-size: 40px;
-        background-color: royalblue;
-        padding: 10px;
-      }
-      .button:hover {
-        transform: scale(1.2);
-      }
-      .image {
-        width: 300px;
-        height: 300px;
-      }
-      .image:hover {
-        transform: scale(1.2);
-      }
-    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
   </head>
+  <body>
+    <!--HEADER-->
+    <header>
+      <div class="game-info-boxes" id="round">Round: 0</div>
+      <h1>Rock, Paper, Scissors!</h1>
+      <div class="game-info-boxes" id="score">Player: 0 Computer: 0</div>
+    </header>
 
-  <body class="grid-container">
-    <div></div>
-    <div class="titlefont">Rock, Paper, Scissors!</div>
-    <div class="scorefont" id="score">
-      Player: 0 Computer: 0
+    <!--IMAGES-->
+    <main>
+      <section class="image-container">
+        <div>
+          <img
+            src="./Images/rockimage.png"
+            alt="rock"
+            class="image"
+            onclick="game('rock')"
+            ;
+          />
+        </div>
+        <div>
+          <img
+            src="./Images/paperimage.png"
+            alt="paper"
+            class="image"
+            onclick="game('paper')"
+            ;
+          />
+        </div>
+        <div>
+          <img
+            src="./Images/blackscissors.png"
+            alt="scissors"
+            class="image"
+            onclick="game('scissors');"
+          />
+        </div>
+      </section>
+
+      <!--PLAY BUTTON-->
+
+      <section class="button-container">
+        <button id="playButton">Click to play!</button>
+      </section>
+    </main>
+
+    <!--MINI POP UP-->
+    <div class="popUpBox" id="miniPopUpBox">
+      <h3 id="roundResult"></h3>
+      <button id="okay">Okay</button>
     </div>
-    <div>
-      <img
-        src="./Images/rockimage.png"
-        class="image"
-        onclick="game('rock')"
-        ;
-      />
+
+    <!--NEW GAME POP UP-->
+    <div id="popUpBox1" class="popUpBox">
+      <h3>Welcome to Rock, Paper, Scissors!</h3>
+      <p>Are you ready to take on the very clever robot computer machine?</p>
+      <p>If so, enter your name below:</p>
+      <input type="text" id="userName" placeholder="type your name here..." />
+      <p>
+        You score one point if you win a round and have one point deducted if
+        you lose a round.
+      </p>
+      <p>It's the best of three rounds.</p>
+      <p>Click the button below to begin!</p>
+      <button id="startGame">Start game</button>
+      <button id="closePopUp">Close</button>
     </div>
-    <div>
-      <img
-        src="./Images/paperimage.png"
-        class="image"
-        onclick="game('paper')"
-        ;
-      />
-    </div>
-    <div>
-      <img
-        src="./Images/blackscissors.png"
-        class="image"
-        onclick="game('scissors');"
-      />
-    </div>
-    <div></div>
-    <div>
-      <button class="button" id="button" onclick="playButton()">Play!</button>
+
+    <!--RESULT POP UP-->
+    <div id="popUpBox2" class="popUpBox">
+      <h1 id="gameOutcome"></h1>
+      <h3 id="gameScore"></h3>
+      <h3 id="gameComment"></h3>
+      <button id="playAgain">Play again</button>
+      <button id="refreshPage">Close</button>
     </div>
     <script src="main.js"></script>
   </body>
