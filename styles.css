@@ -88,8 +88,8 @@ img:hover {
 /*BUTTONS*/
 
 button {
-  height: 60px;
-  width: 250px;
+  /* height: 60px;
+  width: 250px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,7 +97,10 @@ button {
   font-family: Bangers;
   font-size: 40px;
   background-color: var(--blue);
-  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-radius: 5px;
   border: 2px white solid;
   margin: 10px;
@@ -105,28 +108,28 @@ button {
 }
 
 button:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 #startGame {
-  width: 170px;
-  height: 50px;
+  /* width: 170px;
+  height: 50px; */
   font-size: 30px;
   background-color: var(--yellow);
   color: var(--pink);
 }
 
 #closePopUp {
-  width: 100px;
-  height: 30px;
+  /* width: 100px;
+  height: 30px; */
   font-size: 18px;
   background-color: var(--pink);
   color: white;
 }
 
 #okay {
-  width: 100px;
-  height: 30px;
+  /* width: 100px;
+  height: 30px; */
   font-size: 18px;
   background-color: var(--pink);
   color: white;

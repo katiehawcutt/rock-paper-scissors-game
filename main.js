@@ -170,7 +170,6 @@ function playAgain() {
   popUpBox2.style.display = "none";
   body.classList.remove("background-opacity");
   playButton.style.display = "none";
-  gameStarted = false;
   playerScore = 0;
   computerScore = 0;
   gameRound = 1;
@@ -185,6 +184,7 @@ function refreshForNewPlayer() {
   computerScore = 0;
   gameRound = 0;
   person = "Player";
+  gameStarted = false;
   updateBoards();
 }
 
