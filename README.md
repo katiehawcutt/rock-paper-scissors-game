@@ -1,5 +1,7 @@
 # Rock, Paper, Scissors
 
+[Click here to play!](https://katies-rock-paper-scissors-game.netlify.app/)
+
 ![Rock,Paper, Scissors](./Images/game-screenshot.PNG)
 
 ###### September 2020
